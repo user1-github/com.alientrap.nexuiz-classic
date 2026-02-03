@@ -54,7 +54,7 @@ modules:
 - name: launcher
   buildsystem: simple
   build-commands:
-  - install -Dm755 launcher.sh /app/bin
+  - install -Dm755 launcher.sh -t /app/bin
   sources:
   - type: file
     path: launcher.sh
