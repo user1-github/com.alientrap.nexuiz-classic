@@ -18,7 +18,7 @@ cleanup:
   - /share/man
   # launchers
   - /share/nexuiz/nexuiz-linux-glx.sh
-  - /share/nexuiz/nexuiz-linux-sdl.sdh
+  - /share/nexuiz/nexuiz-linux-sdl.sh
   # 32 bit files
   - /share/nexuiz/*-686-*
   # windows files
