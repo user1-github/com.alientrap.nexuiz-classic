@@ -59,30 +59,16 @@ modules:
   - type: file
     path: launcher.sh
 
-- name: icon-install
-  buildsystem: simple
-  build-commands:
-    - |
-      for s in 16 24 32 48 256; do
-        install -Dm644 icons/hicolor/${s}x${s}/apps/com.alientrap.nexuiz-classic.png -t /app/share/icons/hicolor/${s}x${s}/apps/
-      done
-  sources:
-    - type: file
-      paths:
-        - icons/hicolor/16x16/apps/com.alientrap.nexuiz-classic.png
-        - icons/hicolor/24x24/apps/com.alientrap.nexuiz-classic.png
-        - icons/hicolor/32x32/apps/com.alientrap.nexuiz-classic.png
-        - icons/hicolor/48x48/apps/com.alientrap.nexuiz-classic.png
-        - icons/hicolor/256x256/apps/com.alientrap.nexuiz-classic.png
-
 - name: desktop-integration
   buildsystem: simple
   build-commands:
-  - mkdir -p /app/share/metainfo /app/share/applications
-  - install -Dm644 com.alientrap.nexuiz-classic.metainfo.xml /app/share/metainfo/
-  - install -Dm644 com.alientrap.nexuiz-classic.desktop /app/share/applications/
+  - install -Dm644 com.alientrap.nexuiz-classic.metainfo.xml -t /app/share/metainfo
+  - install -Dm644 com.alientrap.nexuiz-classic.desktop -t /app/share/applications
+  - install -Dm644 com.alientrap.nexuiz-classic.png -t /app/share/icons/hicolor/256x256/apps
   sources:
   - type: file
     path: com.alientrap.nexuiz-classic.metainfo.xml
   - type: file
     path: com.alientrap.nexuiz-classic.desktop
+  - type: file
+    path: com.alientrap.nexuiz-classic.png
