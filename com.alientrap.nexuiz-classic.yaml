@@ -1,12 +1,14 @@
-app-id: com.alientrap.nexuiz-classic
+id: com.alientrap.nexuiz-classic
 runtime: org.freedesktop.Platform
-runtime-version: "23.08"
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: launcher.sh
 finish-args:
   - --device=all
   - --socket=pulseaudio
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
   - --share=network
   - --persist=.nexuiz
 cleanup:
@@ -36,7 +38,7 @@ cleanup:
 modules:
 
 - shared-modules/glu/glu-9.json
-- shared-modules/SDL/SDL-1.2.15.json
+- shared-modules/SDL/sdl12-compat.json
 
 - name: nexuiz-classic
   buildsystem: simple
@@ -57,17 +59,33 @@ modules:
   - type: file
     path: launcher.sh
 
+- name: icon-install
+  buildsystem: simple
+  build-commands:
+    - |
+      for s in 16 24 32 48 256; do
+        install -Dm644 icons/hicolor/${s}x${s}/apps/com.alientrap.nexuiz-classic.png -t /app/share/icons/hicolor/${s}x${s}/apps/
+      done
+  sources:
+    - type: file
+      path: icons/hicolor/16x16/apps/com.alientrap.nexuiz-classic.png
+    - type: file
+      path: icons/hicolor/24x24/apps/com.alientrap.nexuiz-classic.png
+    - type: file
+      path: icons/hicolor/32x32/apps/com.alientrap.nexuiz-classic.png
+    - type: file
+      path: icons/hicolor/48x48/apps/com.alientrap.nexuiz-classic.png
+    - type: file
+      path: icons/hicolor/256x256/apps/com.alientrap.nexuiz-classic.png
+
 - name: desktop-integration
   buildsystem: simple
   build-commands:
-  - mkdir -p /app/share/metainfo /app/share/appdata /app/share/applications /app/share/icons/
+  - mkdir -p /app/share/metainfo /app/share/applications
   - mv com.alientrap.nexuiz-classic.metainfo.xml /app/share/metainfo/
   - mv com.alientrap.nexuiz-classic.desktop /app/share/applications/
-  - mv hicolor /app/share/icons/
   sources:
   - type: file
     path: com.alientrap.nexuiz-classic.metainfo.xml
   - type: file
     path: com.alientrap.nexuiz-classic.desktop
-  - type: dir
-    path: icons/
