@@ -12,63 +12,60 @@ finish-args:
   - --share=network
   - --persist=.nexuiz
 cleanup:
-- /include
-- /lib/pkgconfig
-- /share/aclocal
-- /share/man
-# launchers
-- /share/nexuiz/nexuiz-linux-glx.sh
-- /share/nexuiz/nexuiz-linux-sdl.sdh
-# 32 bit files
-- /share/nexuiz/*-686-*
-# windows files
-- /share/nexuiz/*.dll
-- /share/nexuiz/*.exe
-- /share/nexuiz/*.bat
-# mac files
-- /share/nexuiz/Nexuiz-SDL.app
-- /share/nexuiz/Nexuiz.app
-- /share/nexuiz/nexuiz-osx-dedicated
-# extra files (map editor)
-- /share/nexuiz/extra
-# sources and docs
-- /share/nexuiz/sources
-- /share/nexuiz/Docs
-
+  - /include
+  - /lib/pkgconfig
+  - /share/aclocal
+  - /share/man
+  # launchers
+  - /share/nexuiz/nexuiz-linux-glx.sh
+  - /share/nexuiz/nexuiz-linux-sdl.sdh
+  # 32 bit files
+  - /share/nexuiz/*-686-*
+  # windows files
+  - /share/nexuiz/*.dll
+  - /share/nexuiz/*.exe
+  - /share/nexuiz/*.bat
+  # mac files
+  - /share/nexuiz/Nexuiz-SDL.app
+  - /share/nexuiz/Nexuiz.app
+  - /share/nexuiz/nexuiz-osx-dedicated
+  # extra files (map editor)
+  - /share/nexuiz/extra
+  # sources and docs
+  - /share/nexuiz/sources
+  - /share/nexuiz/Docs
 modules:
+  - shared-modules/SDL/sdl12-compat.json
 
-- shared-modules/glu/glu-9.json
-- shared-modules/SDL/sdl12-compat.json
+  - name: nexuiz-classic
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/bin/
+      - mkdir -p /app/share/nexuiz/
+      - mv * /app/share/nexuiz/
+    sources:
+      - type: archive
+        url: https://sourceforge.net/projects/nexuiz/files/NexuizRelease/Nexuiz 2.5.2/nexuiz-252.zip
+        sha512: da661eb2ff1764fed1d5f5547b89e4f9aa47613d41a3999c0202d8858ec2b882e4ef0ec182a81d1bdb25dff2ef65aad6af132009884e3557206941a736c2a68c
 
-- name: nexuiz-classic
-  buildsystem: simple
-  build-commands:
-  - mkdir -p /app/bin/
-  - mkdir -p /app/share/nexuiz/
-  - mv * /app/share/nexuiz/
-  sources:
-  - type: archive
-    url: https://sourceforge.net/projects/nexuiz/files/NexuizRelease/Nexuiz 2.5.2/nexuiz-252.zip
-    sha512: da661eb2ff1764fed1d5f5547b89e4f9aa47613d41a3999c0202d8858ec2b882e4ef0ec182a81d1bdb25dff2ef65aad6af132009884e3557206941a736c2a68c
+  - name: launcher
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 launcher.sh -t /app/bin
+    sources:
+      - type: file
+        path: launcher.sh
 
-- name: launcher
-  buildsystem: simple
-  build-commands:
-  - install -Dm755 launcher.sh -t /app/bin
-  sources:
-  - type: file
-    path: launcher.sh
-
-- name: desktop-integration
-  buildsystem: simple
-  build-commands:
-  - install -Dm644 com.alientrap.nexuiz-classic.metainfo.xml -t /app/share/metainfo
-  - install -Dm644 com.alientrap.nexuiz-classic.desktop -t /app/share/applications
-  - install -Dm644 com.alientrap.nexuiz-classic.png -t /app/share/icons/hicolor/256x256/apps
-  sources:
-  - type: file
-    path: com.alientrap.nexuiz-classic.metainfo.xml
-  - type: file
-    path: com.alientrap.nexuiz-classic.desktop
-  - type: file
-    path: com.alientrap.nexuiz-classic.png
+  - name: desktop-integration
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 com.alientrap.nexuiz-classic.metainfo.xml -t /app/share/metainfo
+      - install -Dm644 com.alientrap.nexuiz-classic.desktop -t /app/share/applications
+      - install -Dm644 com.alientrap.nexuiz-classic.png -t /app/share/icons/hicolor/256x256/apps
+    sources:
+      - type: file
+        path: com.alientrap.nexuiz-classic.metainfo.xml
+      - type: file
+        path: com.alientrap.nexuiz-classic.desktop
+      - type: file
+        path: com.alientrap.nexuiz-classic.png
