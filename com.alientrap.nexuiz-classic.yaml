@@ -11,7 +11,24 @@ finish-args:
   - --share=ipc
   - --share=network
   - --persist=.nexuiz
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - '*.la'
+  - '*.a'
 modules:
+
+  - name: ode
+    config-opts:
+      - --enable-shared
+      - --enable-double-precision
+      - --enable-libccd
+      - --enable-ou
+      - --enable-silent-rules
+    sources:
+      - type: archive
+        url: https://bitbucket.org/odedevs/ode/downloads/ode-0.16.6.tar.gz
+        sha256: c91a28c6ff2650284784a79c726a380d6afec87ecf7a35c32a6be0c5b74513e8
 
   - name: nexuiz-data
     buildsystem: simple
