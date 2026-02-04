@@ -6,11 +6,11 @@ DPROLE=client
 # darkplaces or darkplaces-server
 DPBINARY=darkplaces
 
-ENGINE="/usr/games/${DPBINARY}"
+ENGINE="/app/bin/${DPBINARY}"
 
 DEBUGGER="$NEXUIZ_DEBUGGER"
 
-OPTIONS="-nexuiz -basedir /usr/share/games/nexuiz"
+OPTIONS="-nexuiz -basedir /app/share/nexuiz"
 
 QUIET=0
 
