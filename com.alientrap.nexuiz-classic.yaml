@@ -2,7 +2,7 @@ id: com.alientrap.nexuiz-classic
 runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
-command: launcher.sh
+command: nexuiz
 finish-args:
   - --device=all
   - --socket=pulseaudio
@@ -11,50 +11,52 @@ finish-args:
   - --share=ipc
   - --share=network
   - --persist=.nexuiz
-cleanup:
-  - /include
-  - /lib/pkgconfig
-  - /share/aclocal
-  - /share/man
-  # launchers
-  - /share/nexuiz/nexuiz-linux-glx.sh
-  - /share/nexuiz/nexuiz-linux-sdl.sh
-  # 32 bit files
-  - /share/nexuiz/*-686-*
-  # windows files
-  - /share/nexuiz/*.dll
-  - /share/nexuiz/*.exe
-  - /share/nexuiz/*.bat
-  # mac files
-  - /share/nexuiz/Nexuiz-SDL.app
-  - /share/nexuiz/Nexuiz.app
-  - /share/nexuiz/nexuiz-osx-dedicated
-  # extra files (map editor)
-  - /share/nexuiz/extra
-  # sources and docs
-  - /share/nexuiz/sources
-  - /share/nexuiz/Docs
 modules:
-  - shared-modules/SDL/sdl12-compat.json
 
-  - name: nexuiz-classic
+  - name: nexuiz-data
     buildsystem: simple
     build-commands:
-      - mkdir -p /app/bin/
-      - mkdir -p /app/share/nexuiz/
+      - mkdir -p /app/share/nexuiz/data
       - mv * /app/share/nexuiz/
     sources:
-      - type: archive
-        url: https://sourceforge.net/projects/nexuiz/files/NexuizRelease/Nexuiz 2.5.2/nexuiz-252.zip
-        sha512: da661eb2ff1764fed1d5f5547b89e4f9aa47613d41a3999c0202d8858ec2b882e4ef0ec182a81d1bdb25dff2ef65aad6af132009884e3557206941a736c2a68c
+      - type: file
+        url: https://ftp.debian.org/debian/pool/main/n/nexuiz-data/nexuiz-data_2.5.2-13_all.deb
+        sha256: 0e67d441ad52e479e11f4b4d0cdea57bfb69840bc036f341aaccfaf0be1b97bb
+
+  - name: nexuiz-textures
+    buildsystem: simple
+    build-commands:
+      - mv * /app/share/nexuiz/
+    sources:
+      - type: file
+        url: https://ftp.debian.org/debian/pool/main/n/nexuiz-data/nexuiz-textures_2.5.2-13_all.deb
+        sha256: ea275508dd494a5fe33cded2d41aee6a919952b9ce30b876df46bb64a9997837
+
+  - name: nexuiz-music
+    buildsystem: simple
+    build-commands:
+      - mv * /app/share/nexuiz/
+    sources:
+      - type: file
+        url: https://ftp.debian.org/debian/pool/main/n/nexuiz-data/nexuiz-music_2.5.2-13_all.deb
+        sha256: 9c319a7095ba4dbd7ce76945866dc08c14d02b70d84619cbbc3dd9769afcc229
+
+  - name: darkplaces
+    buildsystem: simple
+    build-commands:
+      - mv * /app/share/nexuiz/
+    sources:
+      - type: file
+        url: https://deb.debian.org/debian/pool/main/d/darkplaces/darkplaces_0~20180908~beta1-7_amd64.deb
+        sha256: 50392c235751ba703149946f1ed00179b4ebd0939dc5b087cf4841589fcfab48
 
   - name: launcher
     buildsystem: simple
     build-commands:
-      - install -Dm755 launcher.sh -t /app/bin
+      - install -Dm755 nexuiz -t /app/bin
     sources:
       - type: file
-        path: launcher.sh
+        path: nexuiz
 
   - name: desktop-integration
     buildsystem: simple
