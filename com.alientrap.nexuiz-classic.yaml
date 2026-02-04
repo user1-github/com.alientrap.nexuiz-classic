@@ -16,37 +16,36 @@ modules:
   - name: nexuiz-data
     buildsystem: simple
     build-commands:
-      - mkdir -p /app/share/nexuiz/data
-      - mv * /app/share/nexuiz/
+      - install -Dm644 /usr/share/games/nexuiz/data/data.pk3 -t /app/share/nexuiz/data
     sources:
-      - type: file
+      - type: archive
         url: https://ftp.debian.org/debian/pool/main/n/nexuiz-data/nexuiz-data_2.5.2-13_all.deb
         sha256: 0e67d441ad52e479e11f4b4d0cdea57bfb69840bc036f341aaccfaf0be1b97bb
 
   - name: nexuiz-textures
     buildsystem: simple
     build-commands:
-      - mv * /app/share/nexuiz/
+      - install -Dm644 /usr/share/games/nexuiz/data/textures.pk3 -t /app/share/nexuiz/data
     sources:
-      - type: file
+      - type: archive
         url: https://ftp.debian.org/debian/pool/main/n/nexuiz-data/nexuiz-textures_2.5.2-13_all.deb
         sha256: ea275508dd494a5fe33cded2d41aee6a919952b9ce30b876df46bb64a9997837
 
   - name: nexuiz-music
     buildsystem: simple
     build-commands:
-      - mv * /app/share/nexuiz/
+      - install -Dm644 /usr/share/games/nexuiz/data/music.pk3 -t /app/share/nexuiz/data
     sources:
-      - type: file
+      - type: archive
         url: https://ftp.debian.org/debian/pool/main/n/nexuiz-data/nexuiz-music_2.5.2-13_all.deb
         sha256: 9c319a7095ba4dbd7ce76945866dc08c14d02b70d84619cbbc3dd9769afcc229
 
   - name: darkplaces
     buildsystem: simple
     build-commands:
-      - mv * /app/share/nexuiz/
+      - install -Dm755 /usr/games/darkplaces -t /app/bin
     sources:
-      - type: file
+      - type: archive
         url: https://deb.debian.org/debian/pool/main/d/darkplaces/darkplaces_0~20180908~beta1-7_amd64.deb
         sha256: 50392c235751ba703149946f1ed00179b4ebd0939dc5b087cf4841589fcfab48
 
