@@ -17,7 +17,7 @@ modules:
     buildsystem: simple
     build-commands:
       - bsdtar -Oxf nexuiz-data_2.5.2-13_all.deb 'data.tar.xz' | bsdtar -xf -
-      - install -Dm644 /usr/share/games/nexuiz/data/data.pk3 -t /app/share/nexuiz/data
+      - install -Dm644 usr/share/games/nexuiz/data/data.pk3 -t /app/share/nexuiz/data
     sources:
       - type: file
         url: https://ftp.debian.org/debian/pool/main/n/nexuiz-data/nexuiz-data_2.5.2-13_all.deb
@@ -27,7 +27,7 @@ modules:
     buildsystem: simple
     build-commands:
       - bsdtar -Oxf nexuiz-textures_2.5.2-13_all.deb 'data.tar.xz' | bsdtar -xf -
-      - install -Dm644 /usr/share/games/nexuiz/data/textures.pk3 -t /app/share/nexuiz/data
+      - install -Dm644 usr/share/games/nexuiz/data/textures.pk3 -t /app/share/nexuiz/data
     sources:
       - type: file
         url: https://ftp.debian.org/debian/pool/main/n/nexuiz-data/nexuiz-textures_2.5.2-13_all.deb
@@ -37,7 +37,7 @@ modules:
     buildsystem: simple
     build-commands:
       - bsdtar -Oxf nexuiz-music_2.5.2-13_all.deb 'data.tar.xz' | bsdtar -xf -
-      - install -Dm644 /usr/share/games/nexuiz/data/music.pk3 -t /app/share/nexuiz/data
+      - install -Dm644 usr/share/games/nexuiz/data/music.pk3 -t /app/share/nexuiz/data
     sources:
       - type: file
         url: https://ftp.debian.org/debian/pool/main/n/nexuiz-data/nexuiz-music_2.5.2-13_all.deb
@@ -47,7 +47,7 @@ modules:
     buildsystem: simple
     build-commands:
       - bsdtar -Oxf darkplaces_0~20180908~beta1-7_amd64.deb 'data.tar.xz' | bsdtar -xf -
-      - install -Dm755 /usr/games/darkplaces -t /app/bin
+      - install -Dm755 usr/games/darkplaces -t /app/bin
     sources:
       - type: file
         url: https://deb.debian.org/debian/pool/main/d/darkplaces/darkplaces_0~20180908~beta1-7_amd64.deb
