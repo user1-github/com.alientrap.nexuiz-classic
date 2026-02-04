@@ -2,10 +2,12 @@
 <!-- Copyright 2020 Richard Szibele -->
 <component type="desktop-application">
   <id>com.alientrap.nexuiz-classic</id>
+  <launchable type="desktop-id">com.alientrap.nexuiz-classic.desktop</launchable>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0</project_license>
   <name>Nexuiz Classic</name>
-  <summary>A multiplayer first-person shooter</summary>
+  <developer_name>Alientrap</developer_name>
+  <summary>Classic arena first person shooter</summary>
   <description>
     <p>
       Nexuiz Classic is a fast-paced 3D deathmatch game with high-end
@@ -28,9 +30,9 @@
   </description>
   <content_rating type="oars-1.1">
     <content_attribute id="violence-fantasy">moderate</content_attribute>
+    <content_attribute id="violence-bloodshed">mild</content_attribute>
     <content_attribute id="social-chat">intense</content_attribute>
   </content_rating>
-  <launchable type="desktop-id">com.alientrap.nexuiz-classic.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <caption>Gameplay 1</caption>
@@ -48,10 +50,6 @@
   <url type="homepage">https://www.alientrap.com/games/nexuiz/</url>
   <url type="bugtracker">https://sourceforge.net/projects/nexuiz/</url>
   <url type="vcs-browser">https://sourceforge.net/projects/nexuiz/</url>
-  <provides>
-    <binary>nexuiz</binary>
-  </provides>
-  <developer_name>Alientrap</developer_name>
   <releases>
     <release version="2.5.2" date="2009-10-01"/>
   </releases>
