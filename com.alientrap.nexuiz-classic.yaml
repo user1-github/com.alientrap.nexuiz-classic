@@ -11,24 +11,7 @@ finish-args:
   - --share=ipc
   - --share=network
   - --persist=.nexuiz
-cleanup:
-  - /include
-  - /lib/pkgconfig
-  - '*.la'
-  - '*.a'
 modules:
-
-  - name: ode
-    config-opts:
-      - --enable-shared
-      - --enable-double-precision
-      - --enable-libccd
-      - --enable-ou
-      - --enable-silent-rules
-    sources:
-      - type: archive
-        url: https://bitbucket.org/odedevs/ode/downloads/ode-0.16.6.tar.gz
-        sha256: c91a28c6ff2650284784a79c726a380d6afec87ecf7a35c32a6be0c5b74513e8
 
   - name: nexuiz-data
     buildsystem: simple
@@ -63,12 +46,12 @@ modules:
   - name: darkplaces
     buildsystem: simple
     build-commands:
-      - bsdtar -Oxf darkplaces_0~20180908~beta1-7_amd64.deb 'data.tar.xz' | bsdtar -xf -
-      - install -Dm755 usr/games/darkplaces -t /app/bin
+      - make sdl-release
+      - install -Dm755 darkplaces-sdl /app/bin/darkplaces
     sources:
-      - type: file
-        url: https://deb.debian.org/debian/pool/main/d/darkplaces/darkplaces_0~20180908~beta1-7_amd64.deb
-        sha256: 50392c235751ba703149946f1ed00179b4ebd0939dc5b087cf4841589fcfab48
+      - type: git
+        url: https://github.com/DarkPlacesEngine/DarkPlaces.git
+        commit: d93f9c4292039354a2b8d40d11bc386891e55fe5
 
   - name: launcher
     buildsystem: simple
