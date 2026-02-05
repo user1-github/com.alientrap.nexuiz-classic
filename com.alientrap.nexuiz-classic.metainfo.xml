@@ -9,6 +9,10 @@
   <developer id="com.alientrap">
     <name>Alientrap</name>
   </developer>
+  <branding>
+    <color type="primary" scheme_preference="light">#ff7b00</color>
+    <color type="primary" scheme_preference="dark">#5e2d00</color>
+  </branding>
   <summary>Classic arena first person shooter</summary>
   <description>
     <p>
