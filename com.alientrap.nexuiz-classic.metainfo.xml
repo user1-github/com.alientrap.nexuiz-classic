@@ -6,7 +6,9 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0</project_license>
   <name>Nexuiz Classic</name>
-  <developer_name>Alientrap</developer_name>
+  <developer id="com.alientrap">
+    <name>Alientrap</name>
+  </developer>
   <summary>Classic arena first person shooter</summary>
   <description>
     <p>
@@ -48,7 +50,6 @@
     </screenshot>
   </screenshots>
   <url type="homepage">https://www.alientrap.com/games/nexuiz/</url>
-  <url type="bugtracker">https://sourceforge.net/projects/nexuiz/</url>
   <url type="vcs-browser">https://sourceforge.net/projects/nexuiz/</url>
   <releases>
     <release version="2.5.2" date="2009-10-01"/>
